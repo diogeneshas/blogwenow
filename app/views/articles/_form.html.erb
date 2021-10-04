@@ -1,0 +1,52 @@
+<%= form_with(model: article) do |form| %>
+  <% if article.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(article.errors.count, "error") %> prohibited this article from being saved:</h2>
+
+      <ul>
+        <% article.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="file">
+    <label class="file-label">
+      <%= form.file_field :featured_image, class: 'file-input' %>
+      <span class="file-cta">
+        <span class="file-icon">
+          <i class="fas fa-upload"></i>
+        </span>
+        <span class="file-label">
+          Escolha a imagem de destaque…
+        </span>
+      </span>
+    </label>
+  </div>
+ 
+  </br>
+
+  <div class="field">
+    <%= form.label 'Título', class: 'label' %>
+    <div class="control">
+      <%= form.text_field :title, class: 'input' %>    
+    </div>
+  </div>
+
+  <div class="field">
+    <%= form.label 'Conteudo', class: 'label' %>
+    <%= form.rich_text_area :body %>
+  </div>
+
+  <div class="field is-grouped">
+    <div class="control">
+      <%= form.submit 'Criar', class: 'button is-link is-warning' %>
+    </div>
+    <div class="control">
+      <%= link_to 'Voltar', articles_path, class: 'button is-link is-light' %>
+    </div>
+  </div>
+<% end %>
+ 
+  

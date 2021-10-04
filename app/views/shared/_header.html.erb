@@ -1,0 +1,91 @@
+<section class="hero is-warning is-small">
+  <div class="hero-head">
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href="/">
+      <%= image_tag('cattoponame.png', size: "112x28")%>
+    </a>
+
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      <%= link_to 'Home', root_path, class: 'navbar-item' %>
+
+      
+    </div>
+
+    <div class="navbar-end">
+      <div class="navbar-item">
+        <div class="buttons">
+        <% unless user_signed_in? %>
+              <a class="button is-danger" href='/users/sign_up'>
+                <strong>Cadastre-se</strong>
+              </a>
+              <a class="button is-light" href='/users/sign_in'>
+                Entrar
+              </a>
+            <% end %>  
+            <% if user_signed_in? %>
+              <%= link_to 'Novo Artigo', new_article_path, class: 'button' %>
+              <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          
+            <%= current_user.email %>
+        </a>
+
+            <div class="navbar-dropdown">
+                <%= link_to 'Editar Usuario', edit_user_registration_path, class: 'navbar-item' %>
+                <hr class="navbar-divider">
+                <%= link_to "Sair", destroy_user_session_path, method: :delete, class: 'is-light navbar-item' %>
+            </div>
+      </div>
+              
+            <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+  </div>
+
+  <div class="hero-body meio">
+    <div class="container has-text-centered">
+      <p class="title">
+        <%= image_tag('cattopo', size: "300x200") %>
+      </p>
+    </div>
+  </div>
+
+  <%# <div class="hero-foot categories">
+    <nav class="tabs is-boxed is-fullwidth">
+      <div class="container">
+        <ul>
+          <li class="is-active">
+            <a>Overview</a>
+          </li>
+          <li>
+            <a>Modifiers</a>
+          </li>
+          <li>
+            <a>Grid</a>
+          </li>
+          <li>
+            <a>Elements</a>
+          </li>
+          <li>
+            <a>Components</a>
+          </li>
+          <li>
+            <a>Layout</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </div> %>
+</section>
