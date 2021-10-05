@@ -1,6 +1,6 @@
 
 </br></br>
-<figure class="image is-3by1">
+<figure class="image">
   <%= image_tag @article.featured_image %>
 </figure></br>
 
@@ -16,3 +16,31 @@
 
 <%= link_to 'Edit', edit_article_path(@article) if policy(@article).destroy? %> |
 <%= link_to 'Back', articles_path %>
+
+<h2>Comentarios</h2>
+<% @article.comments.each do |comment| %>
+  <div class="card">
+    <div class="card-content">
+      <p class="title">
+        <%= comment.body%>
+      </p>
+      <p class="subtitle">
+        <%= comment.user.email %>
+      </p>
+    </div>
+  </div>
+<% end %>
+
+
+<div class="field">
+  <%= simple_form_for [@article, @article.comments.build] do |f|%>
+  <label class="label">Adicionar comentario:</label>
+  <div class="control form-inputs">
+    <%= f.input :body, class: "textarea"%>
+  </div><br>
+  <div class="field is-grouped">
+  <div class="control">
+    <%= f.button :submit, class: 'button is-link' %>
+  </div>
+  <% end %>
+</div>

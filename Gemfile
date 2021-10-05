@@ -53,3 +53,5 @@ gem 'image_processing'
 gem "kaminari", "~> 1.2"
 
 gem "pundit", "~> 2.1"
+
+gem 'simple_form'
